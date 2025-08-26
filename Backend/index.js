@@ -14,7 +14,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",              // during development
-    "https://your-frontend.vercel.app"   // <-- replace after frontend is live
+    "https://crafted-career.vercel.app"   // <-- replace after frontend is live
   ],
   credentials: true
 }));
