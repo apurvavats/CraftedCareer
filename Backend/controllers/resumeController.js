@@ -1,6 +1,6 @@
 import fs from "fs";
+
 import PDFDocument from "pdfkit";
-// import OpenAI from "openai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 import dotenv from "dotenv";
