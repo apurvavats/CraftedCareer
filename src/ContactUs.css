@@ -1,0 +1,71 @@
+/* ===== Contact Us Page Styling ===== */
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: #fff;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: "Poppins", sans-serif;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff4da6;
+  margin-bottom: 1rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem 1.2rem;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.icon-wrapper {
+  background: linear-gradient(135deg, #ff4da6, #ff85b3);
+  color: #fff;
+  padding: 0.9rem;
+  border-radius: 0.75rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.card-link {
+  color: #ff4da6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}

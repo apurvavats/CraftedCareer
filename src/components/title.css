@@ -1,0 +1,58 @@
+/* Include this at the top of your stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+.tagline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 90%;
+}
+
+/* Main headline styling */
+.tagline .main {
+    margin-top: 8rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #5a2d3a; /* deep rose-brown */
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.tagline .main:hover {
+  background-color: rgba(212, 138, 159, 0.2);  /* soft rosy glow */
+  box-shadow: 0 0 20px rgba(212, 138, 159, 0.5),
+              0 0 40px rgba(212, 138, 159, 0.3);
+  border-radius: 10px;
+}
+
+.tagline .sub {
+    margin-bottom: 4rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: #6b3f4f;
+  margin-top: 0.7rem;
+  max-width: 600px;
+  line-height: 1.5;
+  padding: 0.4rem 0.8rem;
+  position: relative;
+  animation: pulseGlow 6s infinite alternate ease-in-out;
+}
+
+/* Keyframe for gentle sage glow */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow:
+      0 0 20px rgba(193, 216, 197, 0.5),
+      0 0 35px rgba(193, 216, 197, 0.3);
+    background-color: rgba(193, 216, 197, 0.2);
+    border-radius: 10px;
+  }
+}

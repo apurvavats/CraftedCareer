@@ -1,0 +1,117 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.how-it-works {
+  background-color: rgba(248, 238, 230, 0.4); /* Gentle ecru backdrop */
+  padding: 3rem 1rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.how-it-works h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #5a2d3a;
+  margin-bottom: 2rem;
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.step {
+  background-color: rgba(255, 255, 252, 0.8);
+  border: 1px solid rgba(193, 216, 197, 0.6);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 200px;
+  flex: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(104, 142, 110, 0.3);
+}
+
+.step .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.step h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #5a2d3a;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  color: #6b3f4f;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.connector {
+  font-size: 2rem;
+  color: rgba(90, 45, 58, 0.5);
+}
+
+.btn1 {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    width: 300px;
+    height: 55px;
+    border-radius: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    background-color: pink;
+    display: block;       /* makes margin:auto work */
+    margin-left: auto;    /* centers horizontally */
+    margin-right: auto;   /* centers horizontally */
+    text-align: center;   /* centers text inside */
+}
+
+/* Elegant button with a soft under-glow on hover */
+.glow-from-below {
+  position: relative;
+  padding: 0.7rem 1.5rem;
+  background-color: #e0b8c1; /* dusty rose tone */
+  color: #5a2d3a;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.btn1:before {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(212,138,159,0.5), transparent);
+  filter: blur(40px);
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.btn1:hover::before {
+  opacity: 1;
+}
+
+.btn1:hover {
+  color: #ffffff;
+}
