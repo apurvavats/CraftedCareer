@@ -45,7 +45,7 @@ export const uploadResume = async (req, res) => {
     const updatedResume = response.text();
     
     // The rest of the function stays the same
-    const pdfPath = `Backend/processed/${Date.now()}-updated.pdf`;
+    const pdfPath = `/processed/${Date.now()}-updated.pdf`;
     const doc = new PDFDocument();
     
     doc.pipe(fs.createWriteStream(pdfPath));

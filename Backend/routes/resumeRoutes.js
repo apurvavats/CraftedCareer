@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Configure multer for PDF uploads
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "Backend/uploads/"),
+  destination: (req, file, cb) => cb(null, "Uploads/"),
   filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
 });
 
