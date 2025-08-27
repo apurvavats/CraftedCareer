@@ -1,6 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
-import './upload.css';
+import React, { useState } from "react";
+import "./upload.css";
 
 function Upload() {
   const [file, setFile] = useState(null);
@@ -34,23 +33,30 @@ function Upload() {
       form.append("resume", file);
       form.append("jobDescription", job);
 
-      // 1. Calling the correct '/api/upload' endpoint
-      const res = await fetch(`${process.env.REACT_APP_API_BASE || "http://localhost:5000"}api/upload`, {
+      // ✅ Ensure proper slash before /api
+      const base = process.env.REACT_APP_API_BASE || "http://localhost:5000";
+      const res = await fetch(`${base}api/upload`, {
         method: "POST",
-        body: form
+        body: form,
       });
 
       if (!res.ok) {
-        const msg = await res.json();
-        throw new Error(msg.error || "Failed to generate resume.");
+        let msg = "Failed to generate resume.";
+        try {
+          const errData = await res.json();
+          msg = errData.error || msg;
+        } catch (_) {}
+        throw new Error(msg);
       }
 
-      // 2. Handling the JSON response to get the download URL
       const result = await res.json();
-      
-      // 3. Using the URL to trigger the download
-      window.location.href = result.downloadUrl;
 
+      if (!result.downloadUrl) {
+        throw new Error("No download link received from server.");
+      }
+
+      // ✅ Trigger file download properly
+      window.open(result.downloadUrl, "_blank");
     } catch (e) {
       setErr(e.message || "An unknown error occurred.");
     } finally {
@@ -62,12 +68,21 @@ function Upload() {
     <div className="Upload">
       <div className="upload-card">
         <h1 className="upload-title">Tailor Your Resume</h1>
-        <p className="upload-sub">Upload your PDF and paste the job description. We’ll tailor and return a clean, ATS-friendly PDF.</p>
+        <p className="upload-sub">
+          Upload your PDF and paste the job description. We’ll tailor and return
+          a clean, ATS-friendly PDF.
+        </p>
 
         <form onSubmit={submit} className="upload-form" noValidate>
           <label className="field">
             <span>Resume (PDF only)</span>
-            <input type="file" name="resume" accept="application/pdf" onChange={onFile} required />
+            <input
+              type="file"
+              name="resume"
+              accept="application/pdf"
+              onChange={onFile}
+              required
+            />
             {file && <span className="file-name">Selected: {file.name}</span>}
           </label>
 

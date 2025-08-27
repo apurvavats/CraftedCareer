@@ -8,7 +8,7 @@ import PDFParser from "pdf2json"; // <-- 1. Import the new library
 
 dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-// const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
 
 // This is a helper function to make pdf2json work with async/await
 const getTextFromPdf = (pdfPath) => {
@@ -45,16 +45,17 @@ export const uploadResume = async (req, res) => {
     const updatedResume = response.text();
     
     // The rest of the function stays the same
-    const pdfPath = `/processed/${Date.now()}-updated.pdf`;
+     res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", "attachment; filename=tailored_resume.pdf");
+
     const doc = new PDFDocument();
-    
-    doc.pipe(fs.createWriteStream(pdfPath));
+    doc.pipe(res); // stream PDF directly to response
     doc.fontSize(12).text(updatedResume, { align: "left" });
     doc.end();
-    
-    fs.unlinkSync(resumePath);
 
-    res.json({ downloadUrl: `http://localhost:5000/processed/${pdfPath.split('/').pop()}` });
+    // Cleanup original uploaded file
+    fs.unlinkSync(resumePath);
+    
 
   } catch (error) {
     console.error(error);
