@@ -35,7 +35,7 @@ function Upload() {
       form.append("jobDescription", job);
 
       // 1. Calling the correct '/api/upload' endpoint
-      const res = await fetch(`${process.env.REACT_APP_API_BASE || "http://localhost:5000"}/api/upload`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE || "http://localhost:5000"}api/upload`, {
         method: "POST",
         body: form
       });
