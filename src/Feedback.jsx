@@ -6,11 +6,14 @@ function Feedback() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
 
+  // ✅ Use environment variable (fallback to localhost in dev)
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://craftedcareer.onrender.com/api/feedback", {
+      const res = await fetch(`${API_URL}/api/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,6 +31,7 @@ function Feedback() {
         setStatus("❌ Something went wrong. Try again.");
       }
     } catch (err) {
+      console.error("Feedback error:", err);
       setStatus("❌ Server error. Please check backend.");
     }
   };
