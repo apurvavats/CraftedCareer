@@ -6,7 +6,7 @@
 
 ## Features
 
-- **Resume Upload:** Users can upload their current resume (PDF/DOCX).
+- **Resume Upload:** Users can upload their current resume (PDF).
 - **Job Description Analysis:** The platform analyzes the job description and identifies key skills and requirements.
 - **Highlight Matching Points:** Highlights relevant experiences and skills from the user's resume.
 - **Optimized Resume Generation:** Generates an updated, job-tailored resume ready to submit.
