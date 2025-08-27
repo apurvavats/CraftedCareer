@@ -33,7 +33,6 @@ function Upload() {
       form.append("resume", file);
       form.append("jobDescription", job);
 
-      // ✅ Ensure proper slash before /api
       const base = process.env.REACT_APP_API_BASE || "http://localhost:5000";
       const res = await fetch(`${base}api/upload`, {
         method: "POST",
@@ -41,22 +40,16 @@ function Upload() {
       });
 
       if (!res.ok) {
-        let msg = "Failed to generate resume.";
-        try {
-          const errData = await res.json();
-          msg = errData.error || msg;
-        } catch (_) {}
-        throw new Error(msg);
+        throw new Error("Failed to generate resume.");
       }
 
-      const result = await res.json();
+      // ✅ Handle PDF as a blob (binary file)
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
 
-      if (!result.downloadUrl) {
-        throw new Error("No download link received from server.");
-      }
+      // ✅ Open the tailored PDF in a new tab
+      window.open(url, "_blank");
 
-      // ✅ Trigger file download properly
-      window.open(result.downloadUrl, "_blank");
     } catch (e) {
       setErr(e.message || "An unknown error occurred.");
     } finally {
